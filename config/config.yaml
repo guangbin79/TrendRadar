@@ -549,8 +549,8 @@ advanced:
   rss:
     request_interval: 1000            # 请求间隔（毫秒）
     timeout: 15                       # 请求超时（秒）
-    use_proxy: false                  # 是否使用代理（true=启用, false=不使用）
-    proxy_url: ""                     # RSS 专属代理（留空则使用 crawler.default_proxy）
+    use_proxy: true                   # 是否使用代理（true=启用, false=不使用）
+    proxy_url: "http://172.18.0.1:7897"  # RSS 专属代理（docker 网关上的宿主代理；127.0.0.1 在容器内不可达）
 
   # 排序权重（用于重新排序不同平台的热搜）
   # 合起来等于 1
