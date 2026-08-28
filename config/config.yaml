@@ -543,7 +543,7 @@ advanced:
   crawler:
     request_interval: 2000            # 请求间隔（毫秒）
     use_proxy: false                  # 是否启用代理（true=启用, false=不使用）
-    default_proxy: "http://127.0.0.1:10801"
+    default_proxy: "http://172.18.0.1:7897"  # 默认代理（宿主 Clash 混合端口；容器内需经 docker 网关访问）
 
   # RSS 设置
   rss:

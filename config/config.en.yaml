@@ -468,7 +468,7 @@ advanced:
   crawler:
     request_interval: 2000            # Request interval (ms)
     use_proxy: false                  # Enable proxy (true=on, false=off)
-    default_proxy: "http://127.0.0.1:10801"
+    default_proxy: "http://172.18.0.1:7897"  # Default proxy (host Clash mixed port; containers reach it via the docker gateway)
 
   # RSS settings
   rss:
