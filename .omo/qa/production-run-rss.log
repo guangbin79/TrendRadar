@@ -1,0 +1,26 @@
+[RSS] 开始抓取 19 个 RSS 源...
+[RSS] Hacker News: 获取 20 条
+[RSS] 雅虎财经: 请求失败: 403 Client Error: Forbidden for url: https://finance.yahoo.com/news/rssindex
+[RSS] 量子位: 获取 10 条
+[RSS] InfoQ 中国: 获取 20 条
+[RSS] TechCrunch AI: 获取 20 条
+[RSS] MIT Tech Review AI: 获取 10 条
+[RSS] The Verge AI: 获取 10 条
+[RSS] Ars Technica: 获取 20 条
+[RSS] Import AI: 请求失败: HTTPSConnectionPool(host='importai.substack.com', port=443): Max retries exceeded with url: /feed (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x71b6930108f0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+[RSS] Latent Space: 获取 20 条
+[RSS] Simon Willison: 获取 30 条
+[RSS] Interconnects: 获取 20 条
+[RSS] AI News 日报: 获取 50 条
+[RSS] IT之家: 获取 50 条
+[RSS] 少数派: 获取 10 条
+[RSS] Solidot: 获取 20 条
+[RSS] BBC 中文: 请求失败: HTTPSConnectionPool(host='feeds.bbci.co.uk', port=443): Max retries exceeded with url: /zhongwen/simp/rss.xml (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x71b699812180>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+[RSS] 德国之声中文: 请求失败: HTTPSConnectionPool(host='rss.dw.com', port=443): Max retries exceeded with url: /xml/rss-chi-all (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x71b699811f10>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+[RSS] RFI 法广中文: 请求失败: HTTPSConnectionPool(host='www.rfi.fr', port=443): Max retries exceeded with url: /cn/rss (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x71b692f5e6f0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+[RSS] 抓取完成: 14 个源成功, 5 个失败, 共 310 条
+[RSS] 数据已保存到存储后端
+[RSS] 新鲜度过滤：跳过 187 篇超过指定天数的旧文章（仍保留在数据库中）
+[RSS] 新鲜度过滤：跳过 187 篇超过指定天数的旧文章（仍保留在数据库中）
+[RSS] 检测到 105 条新增
+[RSS] 关键词分组统计：42/105 条匹配

@@ -1,0 +1,82 @@
+[92m08:45:19 - LiteLLM:WARNING[0m: get_model_cost_map.py:271 - LiteLLM: Failed to fetch remote model cost map from https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json: Unknown scheme for proxy URL URL('socks://127.0.0.1:7897/'). Falling back to local backup.
+配置文件加载成功: config/config.yaml
+[调度] timeline.yaml 加载成功: config/timeline.yaml
+未配置任何通知渠道
+============================================================
+版本检查
+============================================================
+远程程序版本: 6.10.0
+远程配置清单: 获取成功 (6 个文件)
+------------------------------------------------------------
+  主程序版本: 6.10.0 ✅ 已是最新
+  config.yaml: 2.4.0 ✅ 已是最新
+  timeline.yaml: 1.2.0 ✅ 已是最新
+  frequency_words.txt: 1.1.0 ✅ 已是最新
+  ai_interests.txt: 1.1.0 ✅ 已是最新
+  ai_analysis_prompt.txt: 2.0.0 ✅ 已是最新
+  ai_translation_prompt.txt: 1.2.0 ✅ 已是最新
+============================================================
+TrendRadar v6.10.0 配置加载完成
+监控平台数量: 11
+时区: Asia/Shanghai
+本地环境，未启用代理
+[存储管理器] 使用本地存储后端 (数据目录: output)
+存储后端: local
+当前北京时间: 2026-08-28 08:45:23
+未配置任何通知渠道，将只进行数据抓取，不发送通知
+报告模式: incremental
+运行模式: 增量模式（只关注新增新闻，无新增时不推送）
+配置的监控平台: ['今日头条', '百度热搜', '华尔街见闻', '澎湃新闻', 'bilibili 热搜', '财联社热门', '凤凰网', '贴吧', '微博', '抖音', '知乎']
+开始爬取数据，请求间隔 2000 毫秒
+获取 toutiao 成功（缓存数据）
+获取 baidu 成功（缓存数据）
+获取 wallstreetcn-hot 成功（最新数据）
+获取 thepaper 成功（最新数据）
+获取 bilibili-hot-search 成功（缓存数据）
+获取 cls-hot 成功（最新数据）
+获取 ifeng 成功（缓存数据）
+获取 tieba 成功（最新数据）
+获取 weibo 成功（缓存数据）
+获取 douyin 成功（缓存数据）
+获取 zhihu 成功（缓存数据）
+成功: ['toutiao', 'baidu', 'wallstreetcn-hot', 'thepaper', 'bilibili-hot-search', 'cls-hot', 'ifeng', 'tieba', 'weibo', 'douyin', 'zhihu'], 失败: []
+[本地存储] 保存失败: attempt to write a readonly database
+[RSS] 开始抓取 19 个 RSS 源...
+[RSS] Hacker News: 获取 20 条
+[RSS] 雅虎财经: 获取 50 条
+[RSS] 量子位: 获取 10 条
+[RSS] InfoQ 中国: 获取 20 条
+[RSS] TechCrunch AI: 获取 20 条
+[RSS] MIT Tech Review AI: 获取 10 条
+[RSS] The Verge AI: 获取 10 条
+[RSS] Ars Technica: 获取 20 条
+[RSS] Import AI: 获取 20 条
+[RSS] Latent Space: 获取 20 条
+[RSS] Simon Willison: 获取 30 条
+[RSS] Interconnects: 获取 20 条
+[RSS] AI News 日报: 获取 50 条
+[RSS] IT之家: 获取 50 条
+[RSS] 少数派: 获取 10 条
+[RSS] Solidot: 获取 20 条
+[RSS] BBC 中文: 获取 38 条
+[RSS] 德国之声中文: 获取 50 条
+[RSS] RFI 法广中文: 获取 30 条
+[RSS] 抓取完成: 19 个源成功, 0 个失败, 共 498 条
+[本地存储] 保存 RSS 数据失败: attempt to write a readonly database
+[RSS] 数据保存失败
+[存储] 从存储后端检测到 253 条新增标题
+增量模式：当天第一次爬取，252 条新闻中有 42 条频率词匹配
+[AI] 正在进行 AI 分析...
+[AI] 配置警告: 未配置 AI API Key，请在 config.yaml 或环境变量 AI_API_KEY 中设置
+[AI] 模型: deepseek/​deepseek-v4-flash
+[AI] Key : ******
+[AI] 参数: timeout=120, max_tokens=5000
+[AI] 分析失败: 未配置 AI API Key，请在 config.yaml 或环境变量 AI_API_KEY 中设置
+[翻译] 开始翻译内容到 中文...
+[翻译] 没有需要翻译的内容
+新增热点过滤后：35 条保留（原始 253 条）
+[翻译] 开始翻译内容到 中文...
+[翻译] 没有需要翻译的内容
+分析流程执行出错: [Errno 13] Permission denied: 'output/html/2026-08-28/08-46.html'
+[本地存储] 关闭数据库连接: output/news/2026-08-28.db
+[本地存储] 关闭数据库连接: output/rss/2026-08-28.db

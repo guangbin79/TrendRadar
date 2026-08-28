@@ -1,0 +1,86 @@
+=== DB check (证据来源: 生产容器 trendradar 运行, 2026-08-28 09:06:36) ===
+说明: rss_feeds 是登记佐证，非健康判定；rss_items 中 N=0 的源无行属正常。
+生产运行: cron 0 8-23 * * * (UTC), 本轮 09:00-09:05 Beijing, job succeeded。
+
+--- .tables ---
+rss_crawl_records  rss_feeds          rss_push_records 
+rss_crawl_status   rss_items        
+
+--- rss_feeds DISTINCT id (应为 19 个启用源) ---
+ai-news
+ars-technica
+bbc-zhongwen
+dw-chinese
+hacker-news
+import-ai
+infoq-cn
+interconnects
+ithome
+latent-space
+mit-tr-ai
+qbitai
+rfi-chinese
+simon-willison
+solidot
+sspai
+techcrunch-ai
+theverge-ai
+yahoo-finance
+
+--- rss_feeds 17 个新 id 登记核对 ---
+OK  qbitai
+OK  infoq-cn
+OK  techcrunch-ai
+OK  mit-tr-ai
+OK  theverge-ai
+OK  ars-technica
+OK  import-ai
+OK  latent-space
+OK  simon-willison
+OK  interconnects
+OK  ai-news
+OK  ithome
+OK  sspai
+OK  solidot
+OK  bbc-zhongwen
+OK  dw-chinese
+OK  rfi-chinese
+
+--- rss_items 按 feed 计数 ---
+feed_id|n
+ai-news|50
+ithome|50
+simon-willison|30
+hacker-news|22
+ars-technica|20
+infoq-cn|20
+interconnects|20
+latent-space|20
+solidot|20
+techcrunch-ai|20
+mit-tr-ai|10
+qbitai|10
+sspai|10
+theverge-ai|10
+
+--- rss_crawl_status (最近一轮) ---
+feed_id|status|err
+rfi-chinese|failed|
+dw-chinese|failed|
+bbc-zhongwen|failed|
+import-ai|failed|
+yahoo-finance|failed|
+solidot|success|
+sspai|success|
+ithome|success|
+ai-news|success|
+interconnects|success|
+simon-willison|success|
+latent-space|success|
+ars-technica|success|
+theverge-ai|success|
+mit-tr-ai|success|
+techcrunch-ai|success|
+infoq-cn|success|
+qbitai|success|
+hacker-news|success|

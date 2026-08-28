@@ -1,0 +1,39 @@
+=== 报告检查 (证据来源: 生产容器 trendradar 运行 09:00-09:05 Beijing) ===
+
+--- HTML 路径 ---
+output/html/2026-08-28/09-05.html (140974 bytes, mtime 2026-08-28 09:05:28.181980320 +0800)
+当日运行产生的文件: 08-03.html (上次生产运行), 09-05.html (本轮)
+
+--- 新源名检索命中统计 (grep -o | sort | uniq -c) ---
+     10 IT之家
+      9 TechCrunch
+      8 InfoQ
+      5 The Verge
+      3 Solidot
+      2 量子位
+      2 Latent Space
+      2 Ars Technica
+      1 Simon Willison
+总计: 25 行命中 (7 个指定源名)
+
+--- 命中摘录 (rss-meta 行, 标记 NEW 的新源条目) ---
+1592:                            <div class="rss-meta"><span class="rss-time">08-28 07:49</span><span class="rss-author">IT之家</span><span class="rss-author" style="color: #dc2626;">NEW</span>
+1598:                            <div class="rss-meta"><span class="rss-time">08-28 07:23</span><span class="rss-author">IT之家</span><span class="rss-author" style="color: #dc2626;">NEW</span>
+1604:                            <div class="rss-meta"><span class="rss-time">08-28 07:16</span><span class="rss-author">TechCrunch AI</span><span class="rss-author" style="color: #dc2626;">NEW</span>
+1610:                            <div class="rss-meta"><span class="rss-time">08-28 06:57</span><span class="rss-author">IT之家</span><span class="rss-author" style="color: #dc2626;">NEW</span>
+1622:                            <div class="rss-meta"><span class="rss-time">08-28 03:52</span><span class="rss-author">TechCrunch AI</span><span class="rss-author" style="color: #dc2626;">NEW</span>
+1652:                            <div class="rss-meta"><span class="rss-time">08-28 01:43</span><span class="rss-author">TechCrunch AI</span><span class="rss-author" style="color: #dc2626;">NEW</span>
+
+--- 内容链接抽验 (新源文章 URL) ---
+href="https://techcrunch.com/2026/08/27/anthropic-and-openai-are-joining-the-ai-stage-at-techcrunch-disrupt-2026/"
+href="https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/"
+href="https://www.ithome.com/0/995/352.htm"
+href="https://www.ithome.com/0/995/346.htm"
+
+--- 报告链路异常检查 ---
+1. 热榜: cls-hot/douyin 首次请求 500 后重试成功, 最终 11/11 成功 — 非异常
+2. AI 分析: 生产容器配置了 API key (openai/glm-4.6), [AI] 分析完成 — 正常
+3. 翻译: 42/42 成功 — 正常
+4. 邮件推送: 发送成功 -> guangbin79@icloud.com
+5. supercronic: job succeeded (schedule 0 8-23 * * * UTC)
+6. RSS 链路异常: 仅 5 个源抓取失败(见 production-run-rss.log), 报告生成/入库/推送链路无异常

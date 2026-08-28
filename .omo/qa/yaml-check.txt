@@ -1,0 +1,7 @@
+PASS: len==20, ids unique, all 17 new ids present
+17 new ids: qbitai, infoq-cn, techcrunch-ai, mit-tr-ai, theverge-ai, ars-technica, import-ai, latent-space, simon-willison, interconnects, ai-news, ithome, sspai, solidot, bbc-zhongwen, dw-chinese, rfi-chinese
+import-ai: max_age_days=3 OK
+interconnects: max_age_days=3 OK
+existing hacker-news: intact
+existing ruanyifeng: intact
+existing yahoo-finance: intact
