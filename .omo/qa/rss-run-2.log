@@ -1,0 +1,107 @@
+配置文件加载成功: /app/config/config.yaml
+[调度] timeline.yaml 加载成功: /app/config/timeline.yaml
+通知渠道配置来源: 邮件(环境变量)
+每个渠道最大账号数: 3
+============================================================
+版本检查
+============================================================
+远程程序版本: 6.10.0
+远程配置清单: 获取成功 (6 个文件)
+------------------------------------------------------------
+  主程序版本: 6.10.0 ✅ 已是最新
+  config.yaml: 2.4.0 ✅ 已是最新
+  timeline.yaml: 1.2.0 ✅ 已是最新
+  frequency_words.txt: 1.1.0 ✅ 已是最新
+  ai_interests.txt: 1.1.0 ✅ 已是最新
+  ai_analysis_prompt.txt: 2.0.0 ✅ 已是最新
+  ai_translation_prompt.txt: 1.2.0 ✅ 已是最新
+============================================================
+TrendRadar v6.10.0 配置加载完成
+监控平台数量: 11
+时区: Asia/Shanghai
+本地环境，未启用代理
+[存储管理器] 使用本地存储后端 (数据目录: output)
+存储后端: local
+当前北京时间: 2026-08-28 09:52:49
+通知功能已启用，将发送通知
+报告模式: incremental
+运行模式: 增量模式（只关注新增新闻，无新增时不推送）
+配置的监控平台: ['今日头条', '百度热搜', '华尔街见闻', '澎湃新闻', 'bilibili 热搜', '财联社热门', '凤凰网', '贴吧', '微博', '抖音', '知乎']
+开始爬取数据，请求间隔 2000 毫秒
+获取 toutiao 成功（最新数据）
+获取 baidu 成功（最新数据）
+获取 wallstreetcn-hot 成功（最新数据）
+获取 thepaper 成功（最新数据）
+获取 bilibili-hot-search 成功（缓存数据）
+获取 cls-hot 成功（最新数据）
+获取 ifeng 成功（缓存数据）
+获取 tieba 成功（最新数据）
+获取 weibo 成功（最新数据）
+获取 douyin 成功（缓存数据）
+获取 zhihu 成功（最新数据）
+成功: ['toutiao', 'baidu', 'wallstreetcn-hot', 'thepaper', 'bilibili-hot-search', 'cls-hot', 'ifeng', 'tieba', 'weibo', 'douyin', 'zhihu'], 失败: []
+[本地存储] 处理完成：新增 43 条，更新 210 条，标题变更 1 条，脱榜 45 条
+数据已保存到存储后端: local
+[RSS] 开始抓取 19 个 RSS 源...
+[RSS] Hacker News: 获取 20 条
+[RSS] 雅虎财经: 获取 50 条
+[RSS] 量子位: 获取 10 条
+[RSS] InfoQ 中国: 获取 20 条
+[RSS] TechCrunch AI: 获取 20 条
+[RSS] MIT Tech Review AI: 获取 10 条
+[RSS] The Verge AI: 获取 10 条
+[RSS] Ars Technica: 获取 20 条
+[RSS] Import AI: 获取 20 条
+[RSS] Latent Space: 获取 20 条
+[RSS] Simon Willison: 获取 30 条
+[RSS] Interconnects: 获取 20 条
+[RSS] AI News 日报: 获取 50 条
+[RSS] IT之家: 获取 50 条
+[RSS] 少数派: 获取 10 条
+[RSS] Solidot: 获取 20 条
+[RSS] BBC 中文: 获取 38 条
+[RSS] 德国之声中文: 获取 50 条
+[RSS] RFI 法广中文: 获取 30 条
+[RSS] 抓取完成: 19 个源成功, 0 个失败, 共 498 条
+[本地存储] RSS 处理完成：新增 204 条，更新 294 条
+[RSS] 数据已保存到存储后端
+[RSS] 新鲜度过滤：跳过 146 篇超过指定天数的旧文章（仍保留在数据库中）
+[RSS] 新鲜度过滤：跳过 146 篇超过指定天数的旧文章（仍保留在数据库中）
+[RSS] 检测到 59 条新增
+[RSS] 关键词分组统计：19/59 条匹配
+[存储] 从存储后端检测到 42 条新增标题
+增量模式：42 条新增新闻中，有 5 条匹配频率词
+[AI] 正在进行 AI 分析...
+[AI] 模型: openai/​glm-4.6
+[AI] Key : sk-lo******
+[AI] 接口: 存在自定义 API 端点
+[AI] 参数: timeout=120, max_tokens=5000
+[AI] 分析完成
+[翻译] 开始翻译内容到 中文...
+[翻译] 共 19 条标题待翻译
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+[翻译] 翻译失败: 批量翻译失败: BadRequestError: litellm.BadRequestError: OpenAIException - System detected potentially unsafe or sensitive content i
+新增热点过滤后：5 条保留（原始 42 条）
+[翻译] 开始翻译内容到 中文...
+[翻译] 没有需要翻译的内容
+HTML报告已生成: output/html/2026-08-28/09-55.html
+最新报告已更新: output/html/latest/incremental.html
+[推送] 准备发送：热榜 5 条 + RSS 19 条，合计 24 条
+新增热点过滤后：5 条保留（原始 42 条）
+[翻译] 开始翻译内容到 中文...
+[翻译] 没有需要翻译的内容
+使用HTML文件: output/html/2026-08-28/09-55.html
+正在发送邮件到 guangbin79@icloud.com...
+SMTP 服务器: smtp.mail.me.com:587
+发件人: guangbin79@icloud.com
+邮件发送成功 [增量分析] -> guangbin79@icloud.com
+HTML报告已生成（Docker环境）: output/html/2026-08-28/09-55.html
+[本地存储] 关闭数据库连接: output/news/2026-08-28.db
+[本地存储] 关闭数据库连接: output/rss/2026-08-28.db

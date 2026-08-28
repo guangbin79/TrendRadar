@@ -1,0 +1,79 @@
+=== Phase P probes 2026-08-28 09:17:25 CST ===
+
+--- P1a: host via proxy 127.0.0.1:10801 ---
+https://importai.substack.com/feed -> curl: (7) Failed to connect to 127.0.0.1 port 10801 after 0 ms: Connection refused
+000
+CURL_FAIL(7)
+https://feeds.bbci.co.uk/zhongwen/simp/rss.xml -> curl: (7) Failed to connect to 127.0.0.1 port 10801 after 0 ms: Connection refused
+000
+CURL_FAIL(7)
+https://rss.dw.com/xml/rss-chi-all -> curl: (7) Failed to connect to 127.0.0.1 port 10801 after 0 ms: Connection refused
+000
+CURL_FAIL(7)
+https://www.rfi.fr/cn/rss -> curl: (7) Failed to connect to 127.0.0.1 port 10801 after 0 ms: Connection refused
+000
+CURL_FAIL(7)
+
+--- P1b: host direct (no proxy, control) ---
+https://importai.substack.com/feed -> 200
+https://feeds.bbci.co.uk/zhongwen/simp/rss.xml -> 301
+https://rss.dw.com/xml/rss-chi-all -> 200
+https://www.rfi.fr/cn/rss -> 200
+
+--- P2: proxy listen surface ---
+no 10801 in ss -tln
+
+--- P3: container default gateway ---
+--- P2b: full host listen surface (ss -tln) ---
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+LISTEN 0      4096       127.0.0.1:37161      0.0.0.0:*          
+LISTEN 0      512        127.0.0.1:37361      0.0.0.0:*          
+LISTEN 0      128        127.0.0.1:5037       0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:8080       0.0.0.0:*          
+LISTEN 0      128          0.0.0.0:22         0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:33331      0.0.0.0:*          
+LISTEN 0      128        127.0.0.1:631        0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:3333       0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:13579      0.0.0.0:*          
+LISTEN 0      512        127.0.0.1:46631      0.0.0.0:*          
+LISTEN 0      512        127.0.0.1:42647      0.0.0.0:*          
+LISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*          
+LISTEN 0      128             [::]:22            [::]:*          
+LISTEN 0      4096               *:7897             *:*          
+LISTEN 0      128            [::1]:631           [::]:*          
+
+--- P2c: common proxy ports check ---
+port 1080: closed
+port 7890: closed
+port 7891: closed
+port 8080: OPEN
+port 8118: closed
+port 10801: closed
+port 10808: closed
+port 10809: closed
+port 20171: closed
+port 20172: closed
+--- P3b: container gateway via /proc/net/route ---
+Iface	Destination	Gateway 	Flags	RefCnt	Use	Metric	Mask		MTU	Window	IRTT                                                       
+eth0	00000000	010012AC	0003	0	0	0	00000000	0	0	0                                                                               
+eth0	000012AC	00000000	0001	0	0	0	0000FFFF	0	0	0                                                                               
+
+--- P3c: docker network inspect ---
+{"trendradar-net":{"IPAMConfig":null,"Links":null,"Aliases":["6a6200b4a63c","trendradar"],"DriverOpts":null,"GwPriority":0,"NetworkID":"4218684c1e0dfad23349555a9193775df9422e16a6f640b3cf64b5b1eb00c6c1","EndpointID":"4d27bbc589db584370202b4a632f335560f0f9a47f08ced768aa974bcc3212c3","Gateway":"172.18.0.1","IPAddress":"172.18.0.3","MacAddress":"76:e3:f9:a8:8f:8b","IPPrefixLen":16,"IPv6Gateway":"","GlobalIPv6Address":"","GlobalIPv6PrefixLen":0,"DNSNames":["trendradar","6a6200b4a63c"]}}
+
+--- P3d: container python direct retest (BBC) ---
+  File "/app/.venv/lib/python3.12/site-packages/requests/adapters.py", line 678, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='feeds.bbci.co.uk', port=443): Max retries exceeded with url: /zhongwen/simp/rss.xml (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed0da583a40>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+--- P4 (bonus evidence): host via candidate proxy 127.0.0.1:7897 (10801 is dead) ---
+https://importai.substack.com/feed -> 200
+https://feeds.bbci.co.uk/zhongwen/simp/rss.xml -> 301
+https://rss.dw.com/xml/rss-chi-all -> 200
+https://www.rfi.fr/cn/rss -> 200
+
+--- P5 (bonus evidence): container via gateway:7897 ---
+https://feeds.bbci.co.uk/zhongwen/simp/rss.xml 200
+https://www.qbitai.com/feed 200
+--- baseline db mtime before dispatch (2026-08-28 09:22:11) ---
+1787878962 output/rss/2026-08-28.db
+2026年 08月 28日 星期五 09:22:11 CST
