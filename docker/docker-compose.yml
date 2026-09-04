@@ -55,8 +55,21 @@ services:
       - RUN_MODE=${RUN_MODE:-cron}
       - IMMEDIATE_RUN=${IMMEDIATE_RUN:-true}
 
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
     networks:
       - trendradar-net
+
+  ai-relay:
+    image: alpine/socat:latest
+    container_name: trendradar-ai-relay
+    restart: unless-stopped
+    network_mode: host
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    command: TCP-LISTEN:13580,fork,bind=host.docker.internal TCP-CONNECT:127.0.0.1:13579
+
 
   trendradar-mcp:
     image: wantcat/trendradar-mcp:latest
