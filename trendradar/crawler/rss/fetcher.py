@@ -65,10 +65,11 @@ class RSSFetcher:
         self.default_max_age_days = default_max_age_days
 
         self.parser = RSSParser()
-        self.session = self._create_session()
+        self.session = self._create_session(use_proxy)
+        self.direct_session = self._create_session(False)
 
-    def _create_session(self) -> requests.Session:
-        """创建请求会话"""
+    def _create_session(self, use_proxy: bool) -> requests.Session:
+        """创建请求会话（use_proxy=True 时挂代理）"""
         session = requests.Session()
         session.headers.update({
             "User-Agent": "TrendRadar/2.0 RSS Reader (https://github.com/trendradar)",
@@ -76,13 +77,45 @@ class RSSFetcher:
             "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
         })
 
-        if self.use_proxy and self.proxy_url:
+        if use_proxy and self.proxy_url:
             session.proxies = {
                 "http": self.proxy_url,
                 "https": self.proxy_url,
             }
 
         return session
+
+    def _fetch_raw(self, feed: RSSFeedConfig) -> Tuple[Optional[str], Optional[str]]:
+        """
+        抓取单个源的原始内容，按 代理→直连→代理 顺序尝试
+
+        机场节点对境外源存在间歇性 SSL 重置（同一域名随时间成败波动），
+        直连可兜底未被墙的站点；被墙站点则由第二次代理尝试补故。
+
+        Returns:
+            (响应文本, 错误信息) 元组，成功时错误信息为 None
+        """
+        attempts = [(self.session, "代理")]
+        if self.use_proxy and self.proxy_url:
+            attempts.append((self.direct_session, "直连"))
+            attempts.append((self.session, "代理"))
+
+        last_error = None
+        for i, (sess, label) in enumerate(attempts):
+            if i:
+                time.sleep(3)
+            try:
+                response = sess.get(feed.url, timeout=self.timeout)
+                response.raise_for_status()
+                return response.text, None
+            except requests.Timeout:
+                last_error = f"请求超时 ({self.timeout}s)"
+            except requests.RequestException as e:
+                last_error = f"请求失败: {e}"
+            if i < len(attempts) - 1:
+                print(f"[RSS] {feed.name}: {label}路径失败，切换路由重试...")
+
+        return None, last_error
 
     def fetch_feed(self, feed: RSSFeedConfig) -> Tuple[List[RSSItem], Optional[str]]:
         """
@@ -95,10 +128,12 @@ class RSSFetcher:
             (条目列表, 错误信息) 元组
         """
         try:
-            response = self.session.get(feed.url, timeout=self.timeout)
-            response.raise_for_status()
+            raw_text, fetch_error = self._fetch_raw(feed)
+            if fetch_error:
+                print(f"[RSS] {feed.name}: {fetch_error}")
+                return [], fetch_error
 
-            parsed_items = self.parser.parse(response.text, feed.url)
+            parsed_items = self.parser.parse(raw_text, feed.url)
 
             # 限制条目数量（0=不限制）
             if feed.max_items > 0:
@@ -131,15 +166,6 @@ class RSSFetcher:
             print(f"[RSS] {feed.name}: 获取 {len(items)} 条")
             return items, None
 
-        except requests.Timeout:
-            error = f"请求超时 ({self.timeout}s)"
-            print(f"[RSS] {feed.name}: {error}")
-            return [], error
-
-        except requests.RequestException as e:
-            error = f"请求失败: {e}"
-            print(f"[RSS] {feed.name}: {error}")
-            return [], error
 
         except ValueError as e:
             error = f"解析失败: {e}"
