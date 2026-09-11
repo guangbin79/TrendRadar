@@ -1,0 +1,6 @@
+docker/.env
+__pycache__/
+*.pyc
+output/
+.omo/
+个人新闻定制备份清单.md
