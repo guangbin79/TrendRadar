@@ -396,6 +396,18 @@ class NewsAnalyzer:
             if ai_mode != mode and (rss_items or standalone_data):
                 print(f"[AI] 独立分析模式（{ai_mode}）：RSS/独立展示区与推送模式（{mode}）不同源，本次分析仅聚焦热榜")
 
+            # 板块行情快照（能源/粮食，供 AI 价格与新闻互证）
+            market_data = ""
+            if analysis_config.get("INCLUDE_MARKET", True):
+                try:
+                    from trendradar.market import build_market_snapshot
+                    market_data = build_market_snapshot(
+                        now_str=self.ctx.get_time_display())
+                    if market_data:
+                        print(f"[行情] 快照就绪（{len(market_data.splitlines()) - 1} 个标的）")
+                except Exception as e:
+                    print(f"[行情] 快照构建失败: {e}")
+
             result = analyzer.analyze(
                 stats=ai_stats,
                 rss_stats=ai_rss_stats,
@@ -404,6 +416,7 @@ class NewsAnalyzer:
                 platforms=platforms,
                 keywords=keywords,
                 standalone_data=ai_standalone,
+                market_data=market_data,
             )
 
             # 设置 AI 分析使用的模式

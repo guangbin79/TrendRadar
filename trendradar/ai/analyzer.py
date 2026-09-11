@@ -109,6 +109,7 @@ class AIAnalyzer:
         platforms: Optional[List[str]] = None,
         keywords: Optional[List[str]] = None,
         standalone_data: Optional[Dict] = None,
+        market_data: str = "",
     ) -> AIAnalysisResult:
         """
         执行 AI 分析
@@ -120,6 +121,7 @@ class AIAnalyzer:
             report_type: 报告类型
             platforms: 平台列表
             keywords: 关键词列表
+            market_data: 板块行情快照文本（能源/粮食，供价格与新闻互证）
 
         Returns:
             AIAnalysisResult: 分析结果
@@ -183,6 +185,7 @@ class AIAnalyzer:
         user_prompt = user_prompt.replace("{news_content}", prepared.news_content)
         user_prompt = user_prompt.replace("{rss_content}", prepared.rss_content)
         user_prompt = user_prompt.replace("{language}", self.language)
+        user_prompt = user_prompt.replace("{market_data}", market_data or "本轮暂无行情数据（接口失败或未启用）")
 
         # 构建独立展示区内容
         standalone_content = ""

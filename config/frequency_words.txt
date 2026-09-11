@@ -149,7 +149,7 @@
 
 [WORD_GROUPS]
 # ═══════════════════════════════════════════════════════════════
-#                    我的关注词组（13 组）
+#                    我的关注词组（17 组）
 # ═══════════════════════════════════════════════════════════════
 
 # 1. 科技类
@@ -201,6 +201,13 @@ devin
 gemini cli
 /(?<![a-zA-Z])pi(?![a-zA-Z])/
 ai编程
+
+# 3.5 AI 生态：MCP 协议 / Agent Skills（配合 HN 专题查询源）
+[AI·MCP·Skills]
+@10
+/(?<![a-zA-Z])mcp(?![a-zA-Z])/
+model context protocol
+/(agent|claude|ai|llm)[-_ ]skills?/ => Agent Skills
 
 # 4. 核能源
 [核能源]
@@ -345,3 +352,44 @@ github
 学区
 强基计划
 北京高考
+
+# 15. A股能源板块（2026-09 新增，秋收/供暖季切换窗口）
+[能源股]
+@10
+煤炭
+石油
+原油
+天然气
+油气
+电力
+电网
+光伏
+风电
+储能
+锂矿
+稀土
+油价
+电价
+能源安全
+/\b(oil|crude|opec|coal|natural gas|solar|wind (power|energy)|energy storage|power grid|lithium)\b/ => 能源(英文)
+
+# 16. 粮食/农业股（秋收窗口重点关注：秋粮收割/收储/化肥秋储/种业）
+[粮食·农业股]
+@10
+粮食
+种业
+种子
+化肥
+农药
+玉米
+小麦
+水稻
+大豆
+粮价
+收储
+秋收
+秋粮
+粮食安全
+猪价
+生猪
+/\b(wheat|corn|soy(bean|s)?|grain|harvest|fertilizer|rice)\b/ => 粮食(英文)
