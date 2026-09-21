@@ -248,6 +248,27 @@ rss:
       name: "RFI 法广中文"
       url: "https://www.rfi.fr/cn/rss"
 
+    # ── 国际资讯 · 英文（标题可经 AI 翻译译中）──
+    - id: "guardian-world"
+      name: "卫报国际"
+      url: "https://www.theguardian.com/world/rss"
+
+    - id: "guardian-tech"
+      name: "卫报科技"
+      url: "https://www.theguardian.com/uk/technology/rss"
+
+    - id: "nyt-world"
+      name: "NYT 国际"
+      url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+
+    - id: "nyt-tech"
+      name: "NYT 科技"
+      url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml"
+
+    - id: "animenews-network"
+      name: "Anime News Network"
+      url: "https://www.animenewsnetwork.com/newsroom/rss.xml"
+
     # 自定义源示例
     # - id: "custom-feed"
     #   name: "自定义源"
